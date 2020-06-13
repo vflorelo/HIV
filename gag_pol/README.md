@@ -17,6 +17,7 @@ cd ${workdir}/HIV/qc
 ln -s ../reads/*/*.gz .
 fastqc *.gz
 ```
+
 Quality and length based trimming
 ---------------------------------
 We used [sickle](https://github.com/najoshi/sickle) to discard reads with a phred score of 28 or lower and a length of less than 190 nucleotides. In order to optimize the assembly process, we removed redundant reads using [fastuniq](http://sourceforge.net/projects/fastuniq/) [[ref](https://pubmed.ncbi.nlm.nih.gov/23284954/)].
@@ -34,6 +35,7 @@ do
   cd ..
 done
 ```
+
 Fragment assembly
 -----------------
 Major HIV-subtypes were assembled using [iva](https://github.com/sanger-pathogens/iva) [[ref](https://pubmed.ncbi.nlm.nih.gov/25725497/)]
@@ -59,6 +61,7 @@ done
 esearch -db nucleotide -query "K03455 [accn]" | efetch -format fasta > K03455.fasta
 seqret K03455.fasta -sbegin 790 -send 2549 fasta::stdout >> contigs.fasta
 ```
+
 Fragment assembly
 -----------------
 Minor HIV-subtypes were assembled using [atram2](https://github.com/juliema/aTRAM) [[ref](https://pubmed.ncbi.nlm.nih.gov/29881251/)]. Contig assembly stats were parsed from the fasta headers
@@ -109,6 +112,7 @@ do
   seqret contigs.fasta:$seq_id -sbegin $seq_start -send $seq_end fasta::stdout
 done > pol.fasta
 ```
+
 Clustering and reduction of contigs
 -----------------------------------
 In order to reduce the number of sequences to analyse we constructed clusters of contigs, these clusters consisted of sequences at least 99% identical, cd-hit was employed for such purpose
@@ -136,8 +140,9 @@ do
   cd-hit -i $sample.pol.tmp.fasta -o $sample.pol.fasta -T 12 -c 0.99
 done
 ```
+
 Abundance of transcripts
------------------------------------
+------------------------
 Once we constructed the clusters of nonredundant sequences, we proceeded to quantify such sequences by mapping the reads using [hisat2](https://github.com/DaehwanKimLab/hisat2) [[ref](https://pubmed.ncbi.nlm.nih.gov/25751142/)], alignments were processed using [samtools](https://github.com/samtools/samtools) and abundances were estimated using [htseq](https://htseq.readthedocs.io/en/release_0.11.1/index.html)
 Summarized results for [gag transcripts](gag_counts.md) and [pol transcripts](pol_counts.md)
 ```bash
