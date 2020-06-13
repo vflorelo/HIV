@@ -6,6 +6,7 @@ We followed the procedure from Shambhu *et. al.* [[ref](https://pubmed.ncbi.nlm.
 Workspace setup
 ----------------
 The workspace consisted of the following structure:
+
 `${workdir}/HIV/assembly`,`${workdir}/HIV/clusters`,`${workdir}/HIV/mappings`,`${workdir}/HIV/qc`,`${workdir}/HIV/reads` and `${workdir}/HIV/tree`. Reads were placed in individual directories inside the reads subdirectory.
 Quality assesment
 -----------------
