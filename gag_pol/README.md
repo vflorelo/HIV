@@ -8,6 +8,7 @@ Workspace setup
 The workspace consisted of the following structure:
 
 `${workdir}/HIV/assembly`,`${workdir}/HIV/clusters`,`${workdir}/HIV/mappings`,`${workdir}/HIV/qc`,`${workdir}/HIV/reads` and `${workdir}/HIV/tree`. Reads were placed in individual directories inside the reads subdirectory.
+
 Quality assesment
 -----------------
 NGS-quality was inspected using fastQC [[ref](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)]. Plots and data can be accessed [[here](qc.md)].
